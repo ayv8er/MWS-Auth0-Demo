@@ -56,8 +56,6 @@ $ npm run dev
 $ yarn dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
 ## Env setup
 
 Insert the following variables obtained in the [prerequisites](#prerequisites) section, into the `.env` file
@@ -72,7 +70,7 @@ NEXT_PUBLIC_AUTH0_SECRET_ID=
 
 ## \_app.js
 
-Import `Auth0Provider` and wrap the application. Pass env values into the `domain`, `clientId`, `appOrigin`, and `redirectUri` keys.
+Import `Auth0Provider` and wrap the application. Pass env values into the `domain` and `clientId` keys. Pass "http://localhost:3000" as value into `appOrigin` and `redirectUri`.
 
 ## index.js
 
@@ -90,3 +88,5 @@ const did = await magic.openid.loginWithOIDC({
     providerId: <Magic_Provider_ID>
 })
 ```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.

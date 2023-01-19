@@ -6,8 +6,8 @@ export default function App({ Component, pageProps }) {
     <Auth0Provider
       domain={process.env.NEXT_PUBLIC_AUTH0_DOMAIN}
       clientId={process.env.NEXT_PUBLIC_AUTH0_CLIENT_ID}
-      appOrigin="http://localhost:3000"
-      redirectUri="http://localhost:3000"
+      appOrigin="https://mws-auth0-demo.vercel.app/"
+      redirectUri="https://mws-auth0-demo.vercel.app/"
     >
       <Layout>
         <Component {...pageProps} />
