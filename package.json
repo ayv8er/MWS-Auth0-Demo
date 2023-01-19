@@ -9,9 +9,12 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@auth0/auth0-react": "^1.12.0",
+    "@magic-ext/oidc": "^1.0.0",
     "@next/font": "13.0.7",
     "eslint": "8.29.0",
     "eslint-config-next": "13.0.7",
+    "magic-sdk": "^10.1.0",
     "next": "13.0.7",
     "react": "18.2.0",
     "react-dom": "18.2.0"

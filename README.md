@@ -1,34 +1,92 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# NextJS Demo - Magic Wallet Services + Auth0
+
+NextJS, Magic Web SDK and Auth0 React SPA SDK.
+Use Auth0 for user authentication and authorization, and Magic for wallet creation and key management.
+
+## Prerequisites
+
+A. Auth0
+
+1. Create an [Auth0 account](https://auth0.com/).
+2. Create an Auth0 `Single Page Web Applications` type application.
+3. Go to the settings of the Auth0 application and retain the `Domain`, `Client ID` and `Client Secret`.
+4. Under "Applications" -> "YOUR_APP" -> "Settings", enter "http://localhost:3000" in "Allowed Callback URLs" and "Allowed Logout URLs" under the "Application URIs" sub-section.
+5. Link to [@auth0/auth0-react docs](https://auth0.github.io/auth0-react/)
+
+B. Magic
+
+1. Create a [Magic account](https://magic.link/).
+2. Create a Magic Auth application and retain the `Publishable API Key`.
+3. Link to [Magic Web API docs](https://magic.link/docs/auth/api-reference/client-side-sdks/web), excludes the `loginWithOIDC` method as shown in this demo.
+
+C. Magic MWS Setup
+
+1. Contact Magic and provide the Auth0 `Domain`, Auth0 `Client ID` and Magic `Publishable API Key`.
+2. Magic will return a `Provider ID`, please retain this.
 
 ## Getting Started
 
-First, run the development server:
+These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
+
+## Installation
+
+**Before you install:** please read the [prerequisites](#prerequisites)
+
+Stary by cloning this repo on your local machine:
 
 ```bash
-npm run dev
+$ git clone git@github.com:ayv8er/MWS-Auth0-Demo.git
 # or
-yarn dev
+$ cd PROJECT
+```
+
+To install and set up the library, run:
+
+```bash
+$ npm install
+# or
+$ yarn add
+```
+
+## Serving the app
+
+```bash
+$ npm run dev
+# or
+$ yarn dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+## Env setup
 
-[API routes](https://nextjs.org/docs/api-routes/introduction) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Insert the following variables obtained in the [prerequisites](#prerequisites) section, into the `.env` file
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/api-routes/introduction) instead of React pages.
+```
+NEXT_PUBLIC_MAGIC_PUBLISHABLE_API_KEY=
+NEXT_PUBLIC_MAGIC_PROVIDER_ID=
+NEXT_PUBLIC_AUTH0_DOMAIN=
+NEXT_PUBLIC_AUTH0_CLIENT_ID=
+NEXT_PUBLIC_AUTH0_SECRET_ID=
+```
 
-## Learn More
+## \_app.js
 
-To learn more about Next.js, take a look at the following resources:
+Import `Auth0Provider` and wrap the application. Pass env values into the `domain`, `clientId`, `appOrigin`, and `redirectUri` keys.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## index.js
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+Import `useAuth0`, `Magic` and `OpenIdExtension`. Pass env values into...
 
-## Deploy on Vercel
+```
+const magicClient = new Magic(<Magic_Publishable_API_Key>)
+```
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+and
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+```
+const did = await magic.openid.loginWithOIDC({
+    jwt: <Auth0_User_ID_Token>,
+    providerId: <Magic_Provider_ID>
+})
+```
