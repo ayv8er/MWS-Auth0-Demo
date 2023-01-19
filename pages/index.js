@@ -46,32 +46,57 @@ export default function Home() {
   };
 
   return (
-    <>
-      <main>
-        {!isAuthenticated && <button onClick={login}>Signup / Login</button>}
-        {isAuthenticated && (
+    <main
+      style={{
+        display: "flex",
+        flexFlow: "column",
+        justifyContent: "center",
+      }}
+    >
+      {!isAuthenticated && (
+        <>
+          <div style={{ marginBottom: "2%" }}>
+            Auth0 provider wraps entire app. Magic instance constructs on app
+            render.
+          </div>
           <div
             style={{
               display: "flex",
-              flexFlow: "column",
               justifyContent: "center",
+              margin: "5%",
             }}
           >
-            <div>By Auth0: {user.email}</div>
-            {metadata && <div>By Magic: {metadata.publicAddress}</div>}
-            <div
-              style={{
-                display: "flex",
-                justifyContent: "space-around",
-                margin: "5%",
-              }}
-            >
-              <button onClick={makeMagic}>Make Magic!</button>
-              <button onClick={() => logoutWithRedirect()}>Logout</button>
-            </div>
+            <button onClick={login}>Signup / Login with Auth0</button>
           </div>
-        )}
-      </main>
-    </>
+        </>
+      )}
+
+      {isAuthenticated && (
+        <>
+          <div style={{ marginBottom: "2%" }}>
+            User is logged in via Auth0. Click &quot;Make Magic!&quot; to
+            retrieve wallet
+          </div>
+          <div>By Auth0: {user.email}</div>
+          {metadata && (
+            <div style={{ marginBottom: "2%" }}>
+              By Magic: {metadata.publicAddress}
+            </div>
+          )}
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "space-around",
+              margin: "5%",
+            }}
+          >
+            <button onClick={makeMagic} disabled={!!metadata}>
+              Make Magic!
+            </button>
+            <button onClick={() => logoutWithRedirect()}>Logout</button>
+          </div>
+        </>
+      )}
+    </main>
   );
 }
