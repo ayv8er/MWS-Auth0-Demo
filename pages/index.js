@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useAuth0 } from "@auth0/auth0-react";
-import { Magic } from "magic-sdk";
-import { OpenIdExtension } from "@magic-ext/oidc";
+import { Magic } from "magic-sdk"; // this is imported into any Magic product
+import { OpenIdExtension } from "@magic-ext/oidc"; // the use of this extension is what makes it MWS
 
 export default function Home() {
   const [magic, setMagic] = useState(null);
@@ -35,10 +35,10 @@ export default function Home() {
   };
 
   const makeMagic = async () => {
-    const token = await getIdTokenClaims();
+    const token = await getIdTokenClaims(); // get id token from Auth0
     const did = await magic.openid.loginWithOIDC({
-      jwt: token.__raw,
-      providerId: process.env.NEXT_PUBLIC_MAGIC_PROVIDER_ID,
+      jwt: token.__raw, // pass id token as argument
+      providerId: process.env.NEXT_PUBLIC_MAGIC_PROVIDER_ID, // get this from Magic
     });
     console.log("did token", did);
     const metadata = await magic.user.getMetadata();
