@@ -60,7 +60,7 @@ $ yarn dev
 
 ## Env setup
 
-Insert the following variables obtained in the [prerequisites](#prerequisites) section, into the `.env` file
+Insert the following values obtained in the [prerequisites](#prerequisites) section, into the `.env` file
 
 ```
 NEXT_PUBLIC_MAGIC_PUBLISHABLE_API_KEY=
@@ -72,17 +72,17 @@ NEXT_PUBLIC_AUTH0_SECRET_ID=
 
 ## \_app.js
 
-Import `Auth0Provider` and wrap the application. Pass env values into the `domain` and `clientId` keys. Pass "http://localhost:3000" as value into `appOrigin` and `redirectUri`.
+In the Auth0Provider, pass values into the `domain` and `clientId` keys. Pass "http://localhost:3000" as value into `appOrigin` and `redirectUri`.
 
 ## index.js
 
-Import `useAuth0`, `Magic` and `OpenIdExtension`. Pass env values into...
+In the Magic construct, pass env values into...
 
 ```
 const magicClient = new Magic(<Magic_Publishable_API_Key>)
 ```
 
-and
+In the Magic loginWithOIDC method, pass env values into...
 
 ```
 const did = await magic.openid.loginWithOIDC({
