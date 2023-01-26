@@ -76,7 +76,7 @@ In the Auth0Provider, pass values into the `domain` and `clientId` keys. Pass "h
 
 ## index.js
 
-In the Magic construct, pass env values into...
+In the Magic constructor, pass env values into...
 
 ```
 const magicClient = new Magic(<Magic_Publishable_API_Key>)
