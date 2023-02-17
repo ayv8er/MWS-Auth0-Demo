@@ -3,7 +3,7 @@
 Deployed URL: https://mws-auth0-demo.vercel.app/
 
 NextJS, Magic Web SDK and Auth0 React SPA SDK.
-Use Auth0 for user authentication and authorization, and Magic for wallet creation and key management.
+Use Auth0 for user authentication, and Magic for wallet creation and key management.
 
 ## Prerequisites
 
