@@ -1,6 +1,6 @@
 # NextJS Demo - Magic Wallet Services + Auth0
 
-Deployed URL: https://mws-auth0-demo.vercel.app/
+Deployed URL: [https://mws-auth0-demo.vercel.app/](https://mws-auth0-demo.vercel.app/)
 
 NextJS, Magic Web SDK and Auth0 React SPA SDK.
 Use Auth0 for user authentication, and Magic for wallet creation and key management.
@@ -19,7 +19,7 @@ B. Magic
 
 1. Create a [Magic account](https://magic.link/).
 2. Create a Magic Auth application and retain the `Publishable API Key`.
-3. Link to [Magic Web API docs](https://magic.link/docs/auth/api-reference/client-side-sdks/web), excludes the `loginWithOIDC` method as shown in this demo.
+3. Link to [Magic Web API docs](https://magic.link/docs/auth/api-reference/client-side-sdks/web)
 
 C. Magic MWS Setup
 
