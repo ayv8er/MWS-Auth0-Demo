@@ -86,7 +86,7 @@ In the Magic loginWithOIDC method, pass env values into...
 
 ```
 const did = await magic.openid.loginWithOIDC({
-    jwt: <Auth0_User_ID_Token>,
+    jwt: <Auth0_OIDC_Token>,
     providerId: <Magic_Provider_ID>
 })
 ```
